@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<title>WaKe株式会社｜仙台市太白区の土木工事</title>
+<meta name="description" content="WaKe株式会社（仙台市太白区）。下水道・水道・側溝・道路工事。あなたの街を、もっと快適に。">
+<meta property="og:title" content="WaKe株式会社｜仙台市太白区の土木工事">
+<meta property="og:description" content="下水道・水道・側溝・道路工事。あなたの街を、もっと快適に。">
+<meta property="og:image" content="v0.jpg">
+<style>
+  :root{
+    --bg:#ffffff;
+    --pale:#EEF4FA;      /* ごく薄い青 */
+    --main:#00488E;      /* HP・ロゴの青 */
+    --main-d:#003263;    /* 濃い紺 */
+    --ink:#10233F;
+    --sub:#5B6E88;
+    --line:#06C755;
+    --border:rgba(0,72,142,.16);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html{background:var(--bg)}
+  body{
+    color:var(--ink);min-height:100dvh;
+    background:
+      linear-gradient(180deg,var(--pale) 0,var(--bg) 360px),
+      var(--bg);
+    font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",sans-serif;
+    -webkit-font-smoothing:antialiased;display:flex;justify-content:center;
+  }
+  .app{width:100%;max-width:460px;padding:18px 16px calc(24px + env(safe-area-inset-bottom))}
+
+  /* ===== 上：ロゴ ===== */
+  .head{text-align:center;padding-top:6px}
+  .brandcard{
+    display:inline-block;background:#fff;border-radius:18px;padding:8px 18px 6px;
+    border:1.5px solid var(--border);
+    box-shadow:0 8px 22px rgba(0,50,99,.10);
+  }
+  .brandcard img{display:block;width:112px;height:auto}
+  .catch{margin-top:12px;font-size:17px;font-weight:800;letter-spacing:.08em;color:var(--main-d);line-height:1.5}
+  .biz{margin-top:4px;font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--sub)}
+  .bar{display:block;width:36px;height:3px;border-radius:2px;background:var(--main);margin:10px auto 0}
+
+  /* ===== 連絡先 ===== */
+  .details{margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:7px}
+  .chip{
+    display:flex;align-items:center;gap:9px;text-decoration:none;min-width:0;
+    padding:8px 10px;border:1.5px solid var(--border);border-radius:13px;background:#fff;
+    box-shadow:0 3px 10px rgba(0,50,99,.06);transition:transform .06s ease;
+  }
+  a.chip:active{transform:scale(.98)}
+  .chip.full{grid-column:1 / -1}
+  .chip .ic{
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;background:var(--main);
+  }
+  .chip .ic svg{width:16px;height:16px}
+  .chip .ic.instagram{background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf)}
+  .chip .ic.tiktok{background:#111}
+  .chip .tx{display:flex;flex-direction:column;line-height:1.22;text-align:left;min-width:0}
+  .chip .tx small{font-size:9px;font-weight:800;letter-spacing:.1em;color:var(--main)}
+  .chip .tx b{font-size:13px;color:var(--ink);font-weight:700;overflow-wrap:anywhere}
+  .chip.tel{background:var(--main);border-color:var(--main)}
+  .chip.tel .ic{background:#fff}
+  .chip.tel .ic svg{fill:var(--main)}
+  .chip.tel .tx small{color:#cfe0f2}
+  .chip.tel .tx b{color:#fff;font-size:21px;letter-spacing:.03em}
+  .chip.rep .tx b{font-size:16px;letter-spacing:.12em}
+  .chip.address .tx b{font-size:13px;line-height:1.35}
+  .chip.address .zip{font-size:11px;color:var(--sub);font-weight:600}
+  .nw{white-space:nowrap}
+  .chip.mail .tx b{font-size:11px}
+  .chip .arrow{margin-left:auto;flex:0 0 auto;color:var(--main);font-size:22px;font-weight:700;line-height:1;padding-left:4px}
+  .chip.tel .arrow{color:#fff}
+
+  /* ===== 動画 ===== */
+  .movie-h{margin:26px 0 4px;text-align:center}
+  .movie-h b{display:block;font-family:"Helvetica Neue",Arial,sans-serif;font-size:13px;font-weight:800;letter-spacing:.32em;color:var(--main)}
+  .movie-h span{font-size:11px;color:var(--sub);letter-spacing:.06em}
+  .movie{
+    margin-top:18px;opacity:0;transform:translateY(28px);
+    transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1);
+  }
+  .movie.show{opacity:1;transform:none}
+  .movie .cap{display:flex;align-items:baseline;gap:8px;margin:0 4px 7px}
+  .movie .no{font-family:"Helvetica Neue",Arial,sans-serif;font-size:22px;font-weight:800;color:var(--main);line-height:1}
+  .movie .ttl{font-size:13px;font-weight:700;color:var(--ink);letter-spacing:.06em}
+  .frame{position:relative}
+  .frame video{
+    width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;display:block;
+    border-radius:18px;background:#0b1626;
+    box-shadow:0 14px 32px rgba(0,50,99,.18);
+    border:3px solid #fff;outline:1.5px solid var(--border);
+  }
+  .mute{
+    position:absolute;bottom:14px;right:14px;z-index:3;
+    width:40px;height:40px;border:none;border-radius:50%;
+    background:rgba(0,40,80,.6);color:#fff;font-size:16px;line-height:40px;text-align:center;
+    -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);cursor:pointer;
+  }
+
+  .foot{margin-top:28px;text-align:center;font-size:10px;line-height:1.8;letter-spacing:.06em;color:var(--sub)}
+  .foot a{color:var(--main)}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="head">
+    <span class="brandcard"><img src="logo.png" alt="WaKe株式会社"></span>
+    <p class="catch">あなたの街を もっと快適に</p>
+    <p class="biz">下水道・水道・側溝・道路工事｜仙台市太白区</p>
+    <span class="bar"></span>
+  </header>
+
+  <section class="details">
+    <div class="chip rep full">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.4"/><path d="M5.5 20a6.5 6.5 0 0 1 13 0"/></svg></span>
+      <span class="tx"><small>代表取締役</small><b>渡邊 寛人</b></span>
+    </div>
+    <a class="chip tel full" href="tel:0223026934">
+      <span class="ic"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .5 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.5-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.3 1l-2.2 2.3z"/></svg></span>
+      <span class="tx"><small>お電話（営業所）タップで発信</small><b>022-302-6934</b></span>
+      <span class="arrow" aria-hidden="true">›</span>
+    </a>
+    <a class="chip full" href="tel:09031202034">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="#fff"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .5 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.5-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.3 1l-2.2 2.3z"/></svg></span>
+      <span class="tx"><small>携帯（代表 渡邊）</small><b>090-3120-2034</b></span>
+      <span class="arrow" aria-hidden="true">›</span>
+    </a>
+    <a class="chip address full" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%AE%AE%E5%9F%8E%E7%9C%8C%E4%BB%99%E5%8F%B0%E5%B8%82%E5%A4%AA%E7%99%BD%E5%8C%BA%E5%AF%8C%E6%B2%A2%E8%A5%BF2%E4%B8%81%E7%9B%AE12-14" target="_blank" rel="noopener">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.5-5.7-6.5-10.2A6.5 6.5 0 0 1 18.5 10.8C18.5 15.3 12 21 12 21z"/><circle cx="12" cy="10.6" r="2.4"/></svg></span>
+      <span class="tx"><small>営業所 ／ タップで地図</small><b><span class="zip">〒982-0037</span><br><span class="nw">仙台市太白区富沢西2丁目12-14</span></b></span>
+      <span class="arrow" aria-hidden="true">›</span>
+    </a>
+    <a class="chip mail full" href="mailto:hiroto_wake-wake@yahoo.co.jp">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5.5" width="17" height="13" rx="2.2"/><path d="M4 7l8 6 8-6"/></svg></span>
+      <span class="tx"><small>メール</small><b>hiroto_wake-wake@yahoo.co.jp</b></span>
+      <span class="arrow" aria-hidden="true">›</span>
+    </a>
+    <a class="chip" href="https://www.instagram.com/marrrrrrrron1610/" target="_blank" rel="noopener">
+      <span class="ic instagram"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5.2"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.15" fill="#fff" stroke="none"/></svg></span>
+      <span class="tx"><small>INSTAGRAM</small><b>インスタ</b></span>
+    </a>
+    <a class="chip" href="https://www.tiktok.com/@user8060006139343" target="_blank" rel="noopener">
+      <span class="ic tiktok"><svg viewBox="0 0 24 24" fill="#fff"><path d="M16.5 3c.3 2.1 1.5 3.9 3.6 4.3v2.5c-1.3.1-2.6-.3-3.7-1v6.2c0 3.1-2.5 5.7-5.7 5.7S5 18.1 5 15s2.5-5.7 5.7-5.7c.3 0 .6 0 .9.1v2.6c-.3-.1-.6-.1-.9-.1-1.7 0-3.1 1.4-3.1 3.1s1.4 3.1 3.1 3.1 3.1-1.4 3.1-3.1V3h2.7z"/></svg></span>
+      <span class="tx"><small>TIKTOK</small><b>ティックトック</b></span>
+    </a>
+    <a class="chip full" href="https://wake-inc.net/" target="_blank" rel="noopener">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.4 2.4 3.6 5.2 3.6 8.5s-1.2 6.1-3.6 8.5c-2.4-2.4-3.6-5.2-3.6-8.5S9.6 5.9 12 3.5z"/></svg></span>
+      <span class="tx"><small>ホームページ</small><b>wake-inc.net</b></span>
+      <span class="arrow" aria-hidden="true">›</span>
+    </a>
+  </section>
+
+  <div class="movie-h"><b>MOVIE</b><span>下へスクロールして ご覧ください</span></div>
+
+  <section id="movies">
+    <div class="movie"><div class="cap"><span class="no">01</span><span class="ttl">会社紹介ムービー</span></div>
+      <div class="frame"><video src="v0.mp4" poster="v0.jpg" muted loop playsinline preload="metadata"></video><button class="mute" aria-label="音声オン／オフ">🔇</button></div></div>
+    <div class="movie"><div class="cap"><span class="no">02</span><span class="ttl">Wakeくん その1</span></div>
+      <div class="frame"><video src="v1.mp4" poster="v1.jpg" muted loop playsinline preload="none"></video><button class="mute" aria-label="音声オン／オフ">🔇</button></div></div>
+    <div class="movie"><div class="cap"><span class="no">03</span><span class="ttl">Wakeくん その2</span></div>
+      <div class="frame"><video src="v2.mp4" poster="v2.jpg" muted loop playsinline preload="none"></video><button class="mute" aria-label="音声オン／オフ">🔇</button></div></div>
+    <div class="movie"><div class="cap"><span class="no">04</span><span class="ttl">Wakeくん その3</span></div>
+      <div class="frame"><video src="v3.mp4" poster="v3.jpg" muted loop playsinline preload="none"></video><button class="mute" aria-label="音声オン／オフ">🔇</button></div></div>
+    <div class="movie"><div class="cap"><span class="no">05</span><span class="ttl">Wakeくん その4</span></div>
+      <div class="frame"><video src="v4.mp4" poster="v4.jpg" muted loop playsinline preload="none"></video><button class="mute" aria-label="音声オン／オフ">🔇</button></div></div>
+    <div class="movie"><div class="cap"><span class="no">06</span><span class="ttl">Wakeくん その5</span></div>
+      <div class="frame"><video src="v5.mp4" poster="v5.jpg" muted loop playsinline preload="none"></video><button class="mute" aria-label="音声オン／オフ">🔇</button></div></div>
+  </section>
+
+  <footer class="foot">
+    WaKe株式会社<br>
+    宮城県知事 許可（般-2）第20696号<br>
+    本店 〒981-1106 仙台市太白区柳生5丁目14-2<br>
+    工事事務所 〒982-0221 仙台市太白区日本平59
+  </footer>
+</div>
+
+<script>
+(function(){
+  var cards=[].slice.call(document.querySelectorAll('.movie'));
+  var vids=cards.map(function(c){return c.querySelector('video');});
+  var soundOn=null; // 音を出している動画（1本だけ）
+
+  // 画面に入ったら浮き上がって再生、外れたら一時停止
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      var c=e.target, v=c.querySelector('video');
+      if(e.isIntersecting){
+        c.classList.add('show');
+        if(e.intersectionRatio>=0.35){ var p=v.play(); if(p&&p.catch)p.catch(function(){}); }
+      }
+      if(e.intersectionRatio<0.35){ v.pause(); }
+    });
+  },{threshold:[0,0.35,0.7]});
+  cards.forEach(function(c){io.observe(c);});
+
+  // 音声ボタン：押した動画だけ音を出し、他は消す
+  cards.forEach(function(c){
+    var v=c.querySelector('video'), b=c.querySelector('.mute');
+    b.addEventListener('click',function(){
+      var on=v.muted;
+      vids.forEach(function(x,i){ x.muted=true; cards[i].querySelector('.mute').textContent='🔇'; });
+      if(on){ v.muted=false; b.textContent='🔊'; soundOn=v; v.play(); } else { soundOn=null; }
+    });
+  });
+})();
+</script>
+</body>
+</html>
