@@ -19,33 +19,48 @@
     --sub:#5B6E88;
     --line:#06C755;
     --border:rgba(0,72,142,.16);
+    --navy-dd:#001a36;
+    --grid:rgba(255,255,255,.07);
   }
   *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-  html{background:var(--bg)}
+  html{background:var(--navy-dd)}
   body{
-    color:var(--ink);min-height:100dvh;
-    background:
-      linear-gradient(180deg,var(--pale) 0,var(--bg) 360px),
-      var(--bg);
+    color:var(--ink);min-height:100dvh;background:var(--navy-dd);
     font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",sans-serif;
     -webkit-font-smoothing:antialiased;display:flex;justify-content:center;
   }
-  .app{width:100%;max-width:460px;padding:18px 16px calc(24px + env(safe-area-inset-bottom))}
+  .app{width:100%;max-width:460px;overflow:hidden;background:var(--pale);box-shadow:0 0 60px rgba(0,0,0,.35)}
+  /* 設計図の方眼（紺の部分に敷く） */
+  .blueprint{
+    background:
+      linear-gradient(var(--grid) 1px,transparent 1px) 0 0/22px 22px,
+      linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/22px 22px,
+      linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px) 0 0/110px 110px,
+      linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px) 0 0/110px 110px,
+      radial-gradient(120% 70% at 85% 0%,#0a62b8 0,transparent 60%),
+      linear-gradient(170deg,var(--main) 0%,var(--main-d) 70%,#00264d 100%);
+  }
 
   /* ===== 上：ロゴ ===== */
-  .head{text-align:center;padding-top:6px}
+  .head{position:relative;text-align:center;padding:26px 16px 58px;color:#fff}
+  .head .est{position:absolute;top:12px;left:14px;font-family:"Helvetica Neue",Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:.3em;color:rgba(255,255,255,.55)}
+  .head .est.r{left:auto;right:14px}
+  .head .wave{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:42px;display:block}
   .brandcard{
     display:inline-block;background:#fff;border-radius:18px;padding:8px 18px 6px;
-    border:1.5px solid var(--border);
-    box-shadow:0 8px 22px rgba(0,50,99,.10);
+    border:none;
+    box-shadow:0 10px 26px rgba(0,10,30,.35),0 0 0 6px rgba(255,255,255,.12);
   }
   .brandcard img{display:block;width:112px;height:auto}
-  .catch{margin-top:12px;font-size:17px;font-weight:800;letter-spacing:.08em;color:var(--main-d);line-height:1.5}
-  .biz{margin-top:4px;font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--sub)}
-  .bar{display:block;width:36px;height:3px;border-radius:2px;background:var(--main);margin:10px auto 0}
+  .catch{margin-top:16px;font-size:19px;font-weight:800;letter-spacing:.1em;color:#fff;line-height:1.5;text-shadow:0 2px 10px rgba(0,20,50,.4)}
+  .biz{margin-top:6px;display:inline-block;font-size:11px;font-weight:700;letter-spacing:.08em;color:#fff;padding:4px 12px;border:1px solid rgba(255,255,255,.4);border-radius:99px;background:rgba(255,255,255,.08)}
+  .contact{position:relative;padding:4px 16px 34px;background:url("topo.png") center top/100% auto repeat-y,var(--pale)}
+  .contact-h{text-align:center;margin-bottom:12px}
+  .contact-h b{display:block;font-family:"Helvetica Neue",Arial,sans-serif;font-size:13px;font-weight:800;letter-spacing:.32em;color:var(--main)}
+  .contact-h span{font-size:11px;color:var(--sub);letter-spacing:.06em}
 
   /* ===== 連絡先 ===== */
-  .details{margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:7px}
+  .details{display:grid;grid-template-columns:1fr 1fr;gap:7px}
   .chip{
     display:flex;align-items:center;gap:9px;text-decoration:none;min-width:0;
     padding:8px 10px;border:1.5px solid var(--border);border-radius:13px;background:#fff;
@@ -77,23 +92,29 @@
   .chip.tel .arrow{color:#fff}
 
   /* ===== 動画 ===== */
-  .movie-h{margin:26px 0 4px;text-align:center}
-  .movie-h b{display:block;font-family:"Helvetica Neue",Arial,sans-serif;font-size:13px;font-weight:800;letter-spacing:.32em;color:var(--main)}
-  .movie-h span{font-size:11px;color:var(--sub);letter-spacing:.06em}
+  .movies{position:relative;padding:58px 16px 30px;color:#fff}
+  .movies .wave-top{position:absolute;left:0;right:0;top:-1px;width:100%;height:42px;display:block}
+  .movie-h{text-align:center;margin-bottom:4px}
+  .movie-h b{display:block;font-family:"Helvetica Neue",Arial,sans-serif;font-size:13px;font-weight:800;letter-spacing:.32em;color:#fff}
+  .movie-h span{font-size:11px;color:rgba(255,255,255,.7);letter-spacing:.06em}
   .movie{
-    margin-top:18px;opacity:0;transform:translateY(28px);
+    position:relative;margin-top:30px;opacity:0;transform:translateY(28px);
     transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1);
   }
   .movie.show{opacity:1;transform:none}
+  /* 動画と動画のあいだを道路のセンターラインでつなぐ */
+  .movie+.movie::before{content:"";position:absolute;left:50%;top:-30px;height:24px;width:3px;transform:translateX(-50%);
+    background:repeating-linear-gradient(#fff 0 6px,transparent 6px 11px);opacity:.55}
   .movie .cap{display:flex;align-items:baseline;gap:8px;margin:0 4px 7px}
-  .movie .no{font-family:"Helvetica Neue",Arial,sans-serif;font-size:22px;font-weight:800;color:var(--main);line-height:1}
-  .movie .ttl{font-size:13px;font-weight:700;color:var(--ink);letter-spacing:.06em}
+  .movie .no{font-family:"Helvetica Neue",Arial,sans-serif;font-size:13px;font-weight:800;color:var(--main-d);line-height:1;background:#fff;border-radius:6px;padding:4px 7px}
+  .movie .cap{align-items:center}
+  .movie .ttl{font-size:13px;font-weight:700;color:#fff;letter-spacing:.08em}
   .frame{position:relative}
   .frame video{
     width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;display:block;
     border-radius:18px;background:#0b1626;
-    box-shadow:0 14px 32px rgba(0,50,99,.18);
-    border:3px solid #fff;outline:1.5px solid var(--border);
+    box-shadow:0 18px 40px rgba(0,10,30,.45);
+    border:3px solid #fff;
   }
   .mute{
     position:absolute;bottom:14px;right:14px;z-index:3;
@@ -102,19 +123,22 @@
     -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);cursor:pointer;
   }
 
-  .foot{margin-top:28px;text-align:center;font-size:10px;line-height:1.8;letter-spacing:.06em;color:var(--sub)}
-  .foot a{color:var(--main)}
+  .foot{padding:22px 16px calc(26px + env(safe-area-inset-bottom));text-align:center;font-size:10px;line-height:1.9;letter-spacing:.06em;color:rgba(255,255,255,.6);background:var(--navy-dd)}
+  .foot b{color:#fff;font-size:12px;letter-spacing:.12em}
 </style>
 </head>
 <body>
 <div class="app">
-  <header class="head">
+  <header class="head blueprint">
+    <span class="est">SENDAI · MIYAGI</span><span class="est r">EST. 2015</span>
     <span class="brandcard"><img src="logo.png" alt="WaKe株式会社"></span>
     <p class="catch">あなたの街を もっと快適に</p>
     <p class="biz">下水道・水道・側溝・道路工事｜仙台市太白区</p>
-    <span class="bar"></span>
+    <svg class="wave" viewBox="0 0 375 42" preserveAspectRatio="none" aria-hidden="true"><path d="M0 26 C 70 6 130 6 190 22 S 310 44 375 18 V42 H0Z" fill="#EEF4FA"/><path d="M0 30 C 80 12 140 14 200 27 S 320 44 375 24" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1.2"/></svg>
   </header>
 
+  <div class="contact">
+  <div class="contact-h"><b>CONTACT</b><span>お気軽にお問い合わせください</span></div>
   <section class="details">
     <div class="chip rep full">
       <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.4"/><path d="M5.5 20a6.5 6.5 0 0 1 13 0"/></svg></span>
@@ -154,7 +178,10 @@
       <span class="arrow" aria-hidden="true">›</span>
     </a>
   </section>
+  </div>
 
+  <section class="movies blueprint">
+  <svg class="wave-top" viewBox="0 0 375 42" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 H375 V16 C 300 40 240 34 185 20 S 70 0 0 22Z" fill="#EEF4FA"/></svg>
   <div class="movie-h"><b>MOVIE</b><span>下へスクロールして ご覧ください</span></div>
 
   <section id="movies">
@@ -171,9 +198,10 @@
     <div class="movie"><div class="cap"><span class="no">06</span><span class="ttl">Wakeくん その5</span></div>
       <div class="frame"><video src="v5.mp4" poster="v5.jpg" muted loop playsinline preload="none"></video><button class="mute" aria-label="音声オン／オフ">🔇</button></div></div>
   </section>
+  </section>
 
   <footer class="foot">
-    WaKe株式会社<br>
+    <b>WaKe株式会社</b><br>
     宮城県知事 許可（般-2）第20696号<br>
     本店 〒981-1106 仙台市太白区柳生5丁目14-2<br>
     工事事務所 〒982-0221 仙台市太白区日本平59
